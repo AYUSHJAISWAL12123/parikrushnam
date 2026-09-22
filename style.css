@@ -1,3 +1,15 @@
+/* ── PRELOADER ── */
+#preloader{position:fixed;inset:0;z-index:10000;background:#F9F4EC;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
+#preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+#pl-content{position:relative;display:flex;align-items:center;justify-content:center;min-height:80px}
+#pl-text-wrap{display:inline-block;border-right:2px solid #1C1812;padding-right:2px;animation:pl-blink .55s step-end infinite;transition:opacity .6s ease,filter .6s ease,transform .6s ease}
+#pl-text-wrap.out{animation:none;border-color:transparent;opacity:0;filter:blur(12px);transform:scale(1.18)}
+#pl-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4.5vw,2.8rem);font-weight:400;font-style:italic;color:#1C1812;letter-spacing:.04em;white-space:nowrap}
+#pl-logo{position:absolute;max-height:64px;width:auto;opacity:0;filter:blur(8px);transform:scale(.8);transition:opacity .7s ease,filter .7s ease,transform .7s ease}
+#pl-logo.in{opacity:1;filter:blur(0);transform:scale(1)}
+#pl-logo.zoom{transform:scale(1.35);transition:transform 1s cubic-bezier(.25,.1,.25,1)}
+@keyframes pl-blink{50%{border-color:transparent}}
+
 :root{
   --ivory:#F9F4EC;
   --ivory2:#F2EAD8;
@@ -16,19 +28,15 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--ivory);color:var(--charcoal);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;letter-spacing:-.002em;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--ivory);color:var(--charcoal);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;letter-spacing:-.002em;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
 /* ── GRAIN ── */
 body::before{content:'';position:fixed;inset:0;z-index:600;pointer-events:none;
 background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.55}
 
-/* ── CURSOR ── */
-#cur{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--brown);pointer-events:none;z-index:9000;transform:translate(-50%,-50%);transition:width .2s,height .2s}
-#cring{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(92,61,30,.35);pointer-events:none;z-index:8999;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s,background .3s}
-
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:all .5s;background:#ffffff;border-bottom:1px solid rgba(28,24,18,.07)}
-nav.on{background:rgba(249,244,236,.94);backdrop-filter:blur(20px);padding:1rem 5vw;border-bottom:1px solid rgba(28,24,18,.07)}
+nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;padding:1.50rem 5vw;transition:all .5s;background:#ffffff;border-bottom:1px solid rgba(28,24,18,.07)}
+nav.on{background:rgba(249,244,236,.94);backdrop-filter:blur(20px);padding:.94rem 5vw;border-bottom:1px solid rgba(28,24,18,.07)}
 .logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--charcoal);text-decoration:none;letter-spacing:.04em}
 .logo sup{font-size:.55em;color:var(--gold);vertical-align:super;letter-spacing:.1em}
 .logo-img{height:46px;width:auto;display:block}
@@ -132,7 +140,7 @@ h2.section-title.lt em{color:var(--gold-lt)}
 .pf-btn{background:transparent;border:1px solid rgba(28,24,18,.14);color:rgba(28,24,18,.45);padding:.4rem 1rem;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;border-radius:2rem}
 .pf-btn.active,.pf-btn:hover{background:var(--charcoal);color:var(--ivory);border-color:var(--charcoal)}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(28,24,18,.08)}
-.pcard{background:var(--ivory);overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1);cursor:none;position:relative}
+.pcard{background:var(--ivory);overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1);position:relative}
 .pcard:hover{transform:translateY(-6px);z-index:2;box-shadow:0 24px 60px rgba(28,24,18,.1)}
 .pcard-img{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:height .4s}
 .pcard:hover .pcard-img{height:220px}
@@ -214,7 +222,7 @@ h2.section-title.lt em{color:var(--gold-lt)}
 .fam-title em{font-style:italic;color:var(--gold-lt)}
 .fam-body{font-size:.97rem;line-height:1.88;color:rgba(249,244,236,.5);margin-bottom:2rem}
 .fam-segments{display:flex;flex-direction:column;gap:1px}
-.fseg{display:flex;gap:1.4rem;background:rgba(249,244,236,.03);border:1px solid rgba(249,244,236,.06);padding:1.5rem;cursor:none;transition:background .3s}
+.fseg{display:flex;gap:1.4rem;background:rgba(249,244,236,.03);border:1px solid rgba(249,244,236,.06);padding:1.5rem;transition:background .3s}
 .fseg:hover{background:rgba(249,244,236,.07)}
 .fseg-ico{font-size:1.3rem;flex-shrink:0;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(249,244,236,.05);border-radius:var(--r)}
 .fseg-label{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ivory);margin-bottom:.25rem}
@@ -314,7 +322,7 @@ footer{background:#100C08;padding:4.5rem 6vw 2.2rem;border-top:1px solid rgba(24
 .divider.center{margin:1.8rem auto}
 
 /* ── RESPONSIVE ── */
-@media(hover:none){#cur,#cring{display:none}*{cursor:auto!important}}
+
 @media(max-width:1024px){
   .phil-grid,.kyd-intro,.cattle-inner,.family-inner,.trans-inner,.research-intro{grid-template-columns:1fr;gap:3rem}
   .kyd-steps,.std-strip{grid-template-columns:1fr 1fr}

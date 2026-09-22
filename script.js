@@ -1,12 +1,29 @@
-// Cursor
-const cur=document.getElementById('cur'),cring=document.getElementById('cring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function loop(){rx+=(mx-rx)*.09;ry+=(my-ry)*.09;cring.style.left=rx+'px';cring.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('a,button,.pcard,.rcard,.tcard,.kyd-step,.wp,.tl-item,.fseg,.breed-card,.prom-card,.diff-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cring.style.width='56px';cring.style.height='56px';cring.style.borderColor='rgba(92,61,30,.6)'});
-  el.addEventListener('mouseleave',()=>{cring.style.width='36px';cring.style.height='36px';cring.style.borderColor='rgba(92,61,30,.35)'});
-});
+// Preloader — typewriter → logo crossfade
+(function(){
+  var pl=document.getElementById('preloader');if(!pl)return;
+  var textEl=document.getElementById('pl-text');
+  var wrap=document.getElementById('pl-text-wrap');
+  var logo=document.getElementById('pl-logo');
+  var navImg=document.querySelector('.logo img');
+  if(navImg&&logo)logo.src=navImg.src;
+  var str='Pure & Healthy',i=0;
+  textEl.textContent='';
+  var t=setInterval(function(){
+    if(i<str.length){textEl.textContent+=str[i];i++}
+    else{clearInterval(t);setTimeout(function(){
+      wrap.classList.add('out');logo.classList.add('in');
+      setTimeout(function(){
+        logo.classList.add('zoom');
+        setTimeout(function(){
+          pl.classList.add('done');
+          pl.addEventListener('transitionend',function(){pl.remove()});
+        },1000);
+      },600);
+    },400)}
+  },80);
+})();
+
+
 
 // Nav
 const nav=document.getElementById('nav');
