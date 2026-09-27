@@ -1,6 +1,8 @@
 // Preloader — typewriter → logo crossfade
 (function(){
   var pl=document.getElementById('preloader');if(!pl)return;
+  if(sessionStorage.getItem('pl_done')){pl.remove();return;}
+  sessionStorage.setItem('pl_done','1');
   var textEl=document.getElementById('pl-text');
   var wrap=document.getElementById('pl-text-wrap');
   var logo=document.getElementById('pl-logo');
@@ -70,7 +72,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 
 // Mobile menu
 (function(){
-  const burger=document.getElementById('navBurger'),menu=document.getElementById('mobileMenu');
+  const burger=document.getElementById('burger'),menu=document.getElementById('mobileNav');
   if(!burger||!menu)return;
   function setMenu(open){
     menu.classList.toggle('open',open);
