@@ -37,7 +37,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='htt
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;padding:1.50rem 5vw;transition:all .5s;background:#ffffff;border-bottom:1px solid rgba(28,24,18,.07)}
 nav.on{background:rgba(249,244,236,.94);backdrop-filter:blur(20px);padding:.94rem 5vw;border-bottom:1px solid rgba(28,24,18,.07)}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--charcoal);text-decoration:none;letter-spacing:.04em}
+.logo{margin-left:-25px;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--charcoal);text-decoration:none;letter-spacing:.04em}
 .logo sup{font-size:.55em;color:var(--gold);vertical-align:super;letter-spacing:.1em}
 .logo-img{height:50px;width:auto;display:block}
 .ft-logo-wrap{background:var(--ivory);display:inline-block;padding:.55rem 1rem;border-radius:8px;margin-bottom:.75rem}
@@ -370,3 +370,4 @@ nav.on .nav-burger span{background:#111111}
 a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 @media(max-width:900px){.nav-links{display:none}.nav-burger{display:flex}}
 @media(hover:none){.nav-cta,.btn-wa,.btn-ig,.mm-cta{min-height:44px}}
+
