@@ -1,4 +1,4 @@
-// Preloader — typewriter → logo crossfade
+﻿// Preloader — typewriter → logo crossfade
 (function(){
   var pl=document.getElementById('preloader');if(!pl)return;
   var textEl=document.getElementById('pl-text');
@@ -82,4 +82,43 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open'))setMenu(false)});
   window.addEventListener('resize',()=>{if(window.innerWidth>900&&menu.classList.contains('open'))setMenu(false)});
+})();
+
+// Inquiry Button
+(function(){
+  const btn = document.createElement("a");
+  btn.href = "https://forms.gle/J4tyr92naKPhqfNT8";
+  btn.target = "_blank";
+  btn.textContent = " Inquiry / Message";
+  Object.assign(btn.style, {
+    position: "fixed",
+    bottom: "20px",
+    left: "20px",
+    background: "#C19A5B",
+    color: "#1C1812",
+    padding: "0.9rem 1.4rem",
+    borderRadius: "30px",
+    textDecoration: "none",
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: "600",
+    fontSize: "0.95rem",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+    zIndex: "1000",
+    transition: "transform 0.3s",
+    letterSpacing: "0.05em"
+  });
+  btn.onmouseover = function() {
+    this.style.transform = "translateY(-3px)";
+  };
+  btn.onmouseout = function() {
+    this.style.transform = "translateY(0)";
+  };
+  // Responsive sizing
+  if(window.innerWidth < 600) {
+    btn.style.bottom = "15px";
+    btn.style.left = "15px";
+    btn.style.padding = "0.7rem 1.1rem";
+    btn.style.fontSize = "0.85rem";
+  }
+  document.body.appendChild(btn);
 })();
